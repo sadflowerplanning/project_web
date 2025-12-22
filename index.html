@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content='We propose a novel control-augmented flow matching framework for generating Safe, Admissible, and Dynamically consistent trajectories.'>
+  <meta property="og:title" content="SAD-Flower: Flow Matching for Safe, Admissible, and Dynamically Consistent Planning"/>
+  <meta property="og:description" content="We propose a novel control-augmented flow matching framework for generating Safe, Admissible, and Dynamically consistent trajectories."/>
+  <meta property="og:url" content="https://sadflowerplanning.github.io/"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/method_pipeline.png" />
+  <meta property="og:image:width" content="2048"/>
+  <meta property="og:image:height" content="1315"/>
+
+
+  <!-- <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG"> -->
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <!-- <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image"> -->
+  <!-- Keywords for your paper to be indexed by-->
+  <!-- <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+
+
+  <title>SAD-Flower: Flow Matching for Safe, Admissible, and Dynamically Consistent Planning</title>
+  <link rel="icon" type="image/x-icon" href="static/images/method_pipeline.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <!-- Fix MathJax inline math alignment -->
+  <style>
+    /* Block display math (centered equations) */
+    mjx-container[jax="CHTML"][display="true"] {
+      display: block;
+      text-align: center;
+      margin: 1em 0;
+    }
+    /* Inline math - align with text baseline and remove extra spacing */
+    mjx-container[jax="CHTML"]:not([display="true"]) {
+      display: inline !important;
+      vertical-align: baseline !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    /* Remove line height from inline math */
+    mjx-container[jax="CHTML"]:not([display="true"]) * {
+      vertical-align: baseline !important;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+  
+  <!-- MathJax for LaTeX rendering -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']]
+      },
+      chtml: {
+        scale: 1.0,
+        matchFontHeight: true
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><span style="color: red;">SAD-Flower</span>: Flow Matching for <span style="color: red;">S</span>afe, <span style="color: red;">A</span>dmissible, and <span style="color: red;">D</span>ynamically Consistent Planning </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <span class="author-block">
+                <a href="" target="_blank">Anonymous Author(s)</a></span>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Affiliation<br></span>
+            </div>
+            
+                <div class="column has-text-centered">
+                  <div class="publication-links">
+                  <span class="link-block">
+                    <a href="https://arxiv.org/pdf/2511.05355" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                  <span class="link-block">
+                    <a href="" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Accept-Version -->
+
+<!-- <section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><span style="color: red;">SAD-Flower</span>: Flow Matching for <span style="color: red;">S</span>afe, <span style="color: red;">A</span>dmissible, and <span style="color: red;">D</span>ynamically Consistent Planning </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <span class="author-block">
+                <a href="https://ianhuangyh.github.io/" target="_blank">Tzu-Yuan Huang</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://alederer25.github.io/" target="_blank"> Armin Lederer</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://jaywu109.github.io/" target="_blank">Dai-Jie Wu</a><sup>3,4</sup>,</span>
+              <span class="author-block">
+                <a href="https://www.ce.cit.tum.de/en/itr/dai/" target="_blank">Xiaobing Dai</a><sup>1</sup>,</span>
+              <br>
+              <span class="author-block">
+                <a href="https://www.ce.cit.tum.de/itr/team/zhang/" target="_blank">Sihua Zhang</a><sup>5</sup>,</span>
+              <span class="author-block">
+                <a href="https://www.ce.cit.tum.de/itr/sosnowski/" target="_blank">Stefan Sosnowski</a><span><sup>1</sup></span>,</span>
+              <span class="author-block">
+                <a href="https://shaohua0116.github.io/" target="_blank">Shao-Hua Sun</a><sup>3</sup>,</span>
+              <span class="author-block">
+                <a href="https://www.ce.cit.tum.de/itr/hirche/" target="_blank">Sandra Hirche</a><sup>1</sup>,</span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Technical University of Munich, <sup>2</sup>National University of Singapore, <sup>3</sup>National Taiwan University,<br><sup>4</sup>University of Utah, <sup>5</sup>Beijing Institute of Technology<br></span>
+              <span class="eql-cntrb"><b><br>ICLR 2026</b></span>
+            </div>
+            
+                <div class="column has-text-centered">
+                  <div class="publication-links">
+                  <span class="link-block">
+                    <a href="https://arxiv.org/pdf/2511.05355" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                    <span class="link-block">
+                      <a href="https://openreview.net/forum?id=aIAU5vkRXJ" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>ICLR 2026 OpenReview</span>
+                    </a>
+                  </span>
+
+                  <span class="link-block">
+                    <a href="" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- Teaser image-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="static/images/method_pipeline.png">
+      <h2 class="subtitle has-text-centered">
+        We propose a novel control-augmented flow matching framework for generating Safe, Admissible, and Dynamically consistent trajectories.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Flow matching (FM) has shown promising results in data-driven planning. However, it inherently lacks formal guarantees for ensuring state and action constraints,
+            whose satisfaction is a fundamental and crucial requirement for the safety and admissibility of planned trajectories on various systems. Moreover, existing FM
+            planners do not ensure the dynamical consistency, which potentially renders trajectories inexecutable. We address these shortcomings by proposing SAD-Flower,
+            a novel framework for generating <b>S</b>afe, <b>A</b>dmissible, and <b>D</b>ynamically consistent
+            trajectories. Our approach relies on an augmentation of the flow with a virtual
+            control input. Thereby, principled guidance can be derived using techniques from
+            nonlinear control theory, providing formal guarantees for state constraints, action
+            constraints, and dynamic consistency. Crucially, SAD-Flower operates without retraining, enabling test-time satisfaction of unseen constraints. Through extensive
+            experiments across several tasks, we demonstrate that SAD-Flower outperforms
+            various generative-model-based baselines in ensuring constraint satisfaction.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<!-- Image carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <h2 class="title is-3 has-text-centered">Prescribed-Time Scheduling Control</h2>
+    <div class="container is-max-desktop">
+        <h2 class="subtitle has-text-justified">
+          Given the test-time constraint (<span style="color: red;">red ellipses and super-ellipses</span> below), 
+          SAD-Flower generates safe, admissible, and dynamically consistent trajectories without retraining. The left figure 
+          shows the \( t \in [0, T_0) \) period without prescribed-time control, while the right figure shows the \( t \in [T_0, 1] \)
+          period with prescribed-time control enforcing constraint satisfaction within the end of flow time.
+        </h2>
+        <video width="100%" controls>
+          <source src="static/videos/SAD-Flower_PTControl_crop.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+</div>
+</div>
+</section>
+<!-- End image carousel -->
+
+<!-- Image carousel -->
+ <section class="hero is-small">
+  <div class="hero-body">
+    <h2 class="title is-3 has-text-centered">Demo in Robot Locomotion</h2>
+    <div class="container is-max-desktop">
+        <h2 class="subtitle has-text-justified">
+          Given the test-time constraint (<span style="color: red;">red roof</span> below), SAD-Flower generates safe, admissible, and dynamically consistent trajectories withoput retraining. 
+            The left figure is the hopper system and the right figure shows the walker2d system. Both of the torso positions are constrained to be below the red roof, which demonstrating the effectiveness of SAD-Flower.
+        </h2>
+        <div style="text-align: center;">
+          <video width="70%" controls>
+            <source src="static/videos/locomotion_demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+</div>
+</div>
+</section>
+<!-- End image carousel -->
+
+
+<!-- Image carousel -->
+<!-- <section class="hero is-small">
+  <div class="hero-body">
+    <h2 class="title is-3 has-text-centered">Demo in Robot Manipulation</h2>
+    <h2 class="subtitle has-text-centered">
+        Given the test-time constraint (joint limitations to avoid collision), SAD-Flower generates safe trajectories to pick and stack objects.
+    </h2>
+    <div class="container is-max-desktop">
+        <video width="100%" controls loop>
+          <source src="static/videos/banner_video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+</div>
+</div>
+</section> -->
+<!-- End image carousel -->
+
+
+<!-- Image carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <h2 class="title is-3 has-text-centered">Dexterous Grasping Demo for High-Dimensional System</h2>
+    <div class="container is-max-desktop">
+      <!-- <div id="results-carousel" class="carousel results-carousel"> -->
+       <!-- <div class="item"> -->
+        <h2 class="subtitle has-text-justified">
+          Given the test-time constraint (joint limitations to avoid collision), SAD-Flower generates safe, admissible, and dynamically consistent trajectories for relocate tasks.
+        </h2>
+        <div style="text-align: center;">
+          <video width="90%" controls>
+            <source src="static/videos/relocate_0.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+</div>
+</div>
+</section>
+<!-- End image carousel -->
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>
+        @article{huang2025sad,
+          title={SAD-Flower: Flow Matching for Safe, Admissible, and Dynamically Consistent Planning},
+          author={Huang, Tzu-Yuan and Lederer, Armin and Wu, Dai-Jie and Dai, Xiaobing and Zhang, Sihua and Sosnowski, Stefan and Sun, Shao-Hua and Hirche, Sandra},
+          journal={arXiv preprint arXiv:2511.05355},
+          year={2025}
+        }
+      </code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>

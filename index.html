@@ -55,6 +55,13 @@
     mjx-container[jax="CHTML"]:not([display="true"]) * {
       vertical-align: baseline !important;
     }
+    /* Make button text white */
+    .button.is-dark {
+      color: white !important;
+    }
+    .button.is-dark:hover {
+      color: white !important;
+    }
   </style>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -251,10 +258,7 @@
           shows the \( t \in [0, T_0) \) period without prescribed-time control, while the right figure shows the \( t \in [T_0, 1] \)
           period with prescribed-time control enforcing constraint satisfaction within the end of flow time.
         </h2>
-        <video width="100%" controls>
-          <source src="static/videos/SAD-Flower_PTControl_crop.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+        <img src="static/videos/SAD-Flower_PTControl_crop.gif" width="100%" alt="Prescribed-Time Scheduling Control demo">
       </div>
 </div>
 </div>
@@ -271,10 +275,7 @@
             The left figure is the hopper system and the right figure shows the walker2d system. Both of the torso positions are constrained to be below the red roof, which demonstrating the effectiveness of SAD-Flower.
         </h2>
         <div style="text-align: center;">
-          <video width="70%" controls>
-            <source src="static/videos/locomotion_demo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
+          <img src="static/videos/locomotion_demo.gif" width="70%" alt="Robot Locomotion demo">
         </div>
       </div>
 </div>
@@ -313,10 +314,7 @@
           Given the test-time constraint (joint limitations to avoid collision), SAD-Flower generates safe, admissible, and dynamically consistent trajectories for relocate tasks.
         </h2>
         <div style="text-align: center;">
-          <video width="90%" controls>
-            <source src="static/videos/relocate_0.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
+          <img src="static/videos/relocate_0.gif" width="90%" alt="Dexterous Grasping demo">
         </div>
       </div>
 </div>
@@ -330,12 +328,12 @@
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
       <pre><code>
-        @article{huang2025sad,
+        <!-- @article{huang2025sad,
           title={SAD-Flower: Flow Matching for Safe, Admissible, and Dynamically Consistent Planning},
           author={Huang, Tzu-Yuan and Lederer, Armin and Wu, Dai-Jie and Dai, Xiaobing and Zhang, Sihua and Sosnowski, Stefan and Sun, Shao-Hua and Hirche, Sandra},
           journal={arXiv preprint arXiv:2511.05355},
           year={2025}
-        }
+        } -->
       </code></pre>
     </div>
 </section>
